@@ -1,68 +1,214 @@
+/* index.css */
+
+/* General Styles */
 :root {
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
+  --primary-color: #1a1a1a; /* Dark background */
+  --secondary-color: #2b2b2b; /* Slightly lighter for sections */
+  --accent-color: #00bcd4; /* Accent color for highlights */
+  --text-color: #e0e0e0; /* Light text color for contrast */
+  --name-color: #00a1c2; /* Distinct color for the name */
+  --header-footer-bg: linear-gradient(to right, #121212, #1f1f1f); /* Darker gradient for header/footer */
+  --box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Subtle shadow */
+  --header-padding: 1.5rem 0; /* Padding for thicker header */
+  --footer-padding: 1rem 0; /* Padding for footer */
+  --content-max-width: 1200px; /* Max width for content */
+  --content-padding: 1rem; /* Padding for content */
+  font-family: 'Inter', system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.6;
   font-weight: 400;
-
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
-
+  color-scheme: dark;
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
-}
-a:hover {
-  color: #535bf2;
-}
-
 body {
   margin: 0;
   display: flex;
-  place-items: center;
-  min-width: 320px;
+  flex-direction: column;
   min-height: 100vh;
+  background-color: var(--primary-color);
+  color: var(--text-color);
+  width: 100%;
+  overflow-x: hidden; /* Prevent horizontal scrolling */
+  box-sizing: border-box; /* Ensure padding is included in the width */
+  padding: 0 var(--content-padding); /* Consistent padding on both sides */
 }
 
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
+.container {
+  width: 100%;
+  max-width: var(--content-max-width);
+  margin: 0 auto; /* Center content */
+  box-sizing: border-box; /* Include padding in the element's width */
 }
 
-button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
+header,
+footer {
+  width: 100%;
+  background: var(--header-footer-bg);
+  color: var(--text-color);
+  box-shadow: var(--box-shadow);
+  box-sizing: border-box; /* Include padding in width calculation */
+  padding: var(--header-padding); /* Apply consistent padding */
+}
+
+header {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.header-content,
+.footer-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: var(--content-max-width);
+  margin: 0 auto;
+  width: 100%;
+  padding: 0 var(--content-padding); /* Match padding with container */
+  box-sizing: border-box;
+}
+
+header h1 {
+  margin: 0;
+  font-size: 2rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  color: var(--name-color); /* Use a distinct color for the name */
+  transition: color 0.3s ease; /* Smooth color transition */
+}
+
+.name-link {
+  text-decoration: none; /* Remove underline from link */
+  color: inherit; /* Inherit color from parent element */
+}
+
+.name-link:hover h1 {
+  color: var(--accent-color); /* Change color on hover for effect */
+}
+
+nav ul {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  gap: 1.5rem; /* Adjust gap for better fit */
+  margin: 0;
+}
+
+nav a {
   font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
-  cursor: pointer;
-  transition: border-color 0.25s;
-}
-button:hover {
-  border-color: #646cff;
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
+  color: var(--text-color);
+  text-decoration: none;
+  transition: color 0.3s ease;
 }
 
-@media (prefers-color-scheme: light) {
+nav a:hover {
+  color: var(--accent-color);
+}
+
+nav a.active {
+  font-weight: bold;
+  color: var(--accent-color);
+}
+
+main {
+  flex-grow: 1;
+  width: 100%;
+  margin: 0 auto;
+  padding: 2rem 0; /* Remove horizontal padding to match container */
+  box-sizing: border-box; /* Include padding in width calculation */
+}
+
+section {
+  margin-bottom: 2rem;
+  padding: 2rem;
+  background-color: var(--secondary-color);
+  border-radius: 8px;
+  box-shadow: var(--box-shadow);
+  width: 100%; /* Full width */
+  max-width: var(--content-max-width);
+  margin: 0 auto; /* Center content */
+  box-sizing: border-box; /* Include padding in width calculation */
+}
+
+h2 {
+  font-size: 2rem;
+  color: var(--accent-color);
+  margin-top: 0;
+}
+
+h3 {
+  font-size: 1.5rem;
+  color: var(--accent-color);
+  margin-top: 1.5rem;
+}
+
+p {
+  margin: 1rem 0;
+  line-height: 1.8;
+  color: var(--text-color);
+}
+
+footer {
+  position: fixed;
+  bottom: 0;
+  padding: var(--footer-padding);
+  z-index: 1000;
+}
+
+footer a {
+  margin: 0 10px;
+  color: var(--text-color);
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+footer a:hover {
+  color: var(--accent-color);
+}
+
+footer p {
+  margin: 0;
+}
+
+@media (max-width: 768px) {
+  .header-content,
+  .footer-content {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  nav ul {
+    justify-content: center; /* Center navigation items */
+    flex-wrap: wrap; /* Allow wrapping */
+    margin-top: 1rem;
+  }
+
+  main {
+    text-align: center; /* Center align content for consistent look */
+    padding: 2rem 0; /* Maintain vertical padding */
+  }
+
+  footer p,
+  footer a {
+    margin: 0.5rem 0;
+  }
+}
+
+@media (prefers-color-scheme: dark) {
   :root {
-    color: #213547;
-    background-color: #ffffff;
+    color: #e0e0e0;
+    background-color: #121212;
   }
-  a:hover {
-    color: #747bff;
+
+  nav a:hover {
+    color: #00bcd4;
   }
+
   button {
-    background-color: #f9f9f9;
+    background-color: #2b2b2b;
   }
 }
