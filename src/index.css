@@ -229,6 +229,36 @@ button[type="submit"]:hover {
   text-align: center; /* Center-align the success message */
 }
 
+/* Resume page styles */
+.download-button {
+  display: inline-block;
+  margin-top: 1rem;
+  padding: 0.75rem 1.5rem;
+  background-color: var(--accent-color);
+  color: white;
+  text-decoration: none;
+  border-radius: 4px;
+  font-size: 1rem;
+  font-weight: 500;
+  text-align: center;
+  transition: background-color 0.3s ease;
+}
+
+.download-button:hover {
+  background-color: #008ba3; /* Darker accent for hover */
+}
+
+section {
+  max-width: var(--content-max-width);
+  margin: 0 auto;
+  padding: 2rem;
+  background-color: var(--secondary-color);
+  border-radius: 8px;
+  box-shadow: var(--box-shadow);
+  width: 100%; /* Full width */
+  box-sizing: border-box; /* Include padding in width calculation */
+}
+
 @media (max-width: 768px) {
   .header-content,
   .footer-content {
