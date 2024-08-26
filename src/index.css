@@ -9,8 +9,8 @@
   --name-color: #00a1c2; /* Distinct color for the name */
   --header-footer-bg: linear-gradient(to right, #121212, #1f1f1f); /* Darker gradient for header/footer */
   --box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Subtle shadow */
-  --header-padding: 1.5rem 0; /* Padding for thicker header */
-  --footer-padding: 1rem 0; /* Padding for footer */
+  --header-height: 70px; /* Height for header */
+  --footer-height: 50px; /* Height for footer */
   --content-max-width: 1200px; /* Max width for content */
   --content-padding: 1rem; /* Padding for content */
   font-family: 'Inter', system-ui, Avenir, Helvetica, Arial, sans-serif;
@@ -27,47 +27,34 @@ body {
   margin: 0;
   display: flex;
   flex-direction: column;
-  min-height: 100vh;
+  min-height: 100vh; /* Full height of the viewport */
   background-color: var(--primary-color);
   color: var(--text-color);
-  width: 100%;
-  overflow-x: hidden; /* Prevent horizontal scrolling */
-  box-sizing: border-box; /* Ensure padding is included in the width */
-  padding: 0 var(--content-padding); /* Consistent padding on both sides */
-}
-
-.container {
-  width: 100%;
-  max-width: var(--content-max-width);
-  margin: 0 auto; /* Center content */
-  box-sizing: border-box; /* Include padding in the element's width */
-}
-
-header,
-footer {
-  width: 100%;
-  background: var(--header-footer-bg);
-  color: var(--text-color);
-  box-shadow: var(--box-shadow);
-  box-sizing: border-box; /* Include padding in width calculation */
-  padding: var(--header-padding); /* Apply consistent padding */
 }
 
 header {
-  position: sticky;
+  position: fixed;
   top: 0;
+  left: 0;
+  right: 0;
+  height: var(--header-height);
+  background: var(--header-footer-bg);
+  color: var(--text-color);
+  box-shadow: var(--box-shadow);
   z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .header-content,
 .footer-content {
+  max-width: var(--content-max-width);
+  width: 100%;
+  padding: 0 var(--content-padding);
   display: flex;
   justify-content: space-between;
   align-items: center;
-  max-width: var(--content-max-width);
-  margin: 0 auto;
-  width: 100%;
-  padding: 0 var(--content-padding); /* Match padding with container */
   box-sizing: border-box;
 }
 
@@ -114,11 +101,13 @@ nav a.active {
 }
 
 main {
-  flex-grow: 1;
+  flex: 1; /* Allow main to grow and fill available space */
+  overflow-y: auto; /* Make main content scrollable */
+  padding-top: calc(var(--header-height) + 2rem); /* Adjust padding to add extra space below the header */
+  padding-bottom: calc(var(--footer-height) + 1rem); /* Ensure content ends above footer */
   width: 100%;
-  margin: 0 auto;
-  padding: 2rem 0; /* Remove horizontal padding to match container */
   box-sizing: border-box; /* Include padding in width calculation */
+  margin-top: var(--header-height); /* Offset main content to start below header */
 }
 
 section {
@@ -137,6 +126,7 @@ h2 {
   font-size: 2rem;
   color: var(--accent-color);
   margin-top: 0;
+  padding-top: 1rem; /* Add padding to top of h2 for better spacing */
 }
 
 h3 {
@@ -151,29 +141,7 @@ p {
   color: var(--text-color);
 }
 
-footer {
-  position: fixed;
-  bottom: 0;
-  padding: var(--footer-padding);
-  z-index: 1000;
-}
-
-footer a {
-  margin: 0 10px;
-  color: var(--text-color);
-  text-decoration: none;
-  transition: color 0.3s ease;
-}
-
-footer a:hover {
-  color: var(--accent-color);
-}
-
-footer p {
-  margin: 0;
-}
-
-/* Contact form styles */
+/* Contact form and Download Resume button styles */
 form {
   display: flex;
   flex-direction: column;
@@ -185,14 +153,17 @@ form {
 form div {
   display: flex;
   flex-direction: column;
+  width: 100%;
 }
 
 label {
   margin-bottom: 0.5rem;
   font-weight: 500;
+  text-align: left; /* Left-align form labels */
 }
 
-input, textarea {
+input,
+textarea {
   padding: 0.75rem;
   border-radius: 4px;
   border: 1px solid #ddd;
@@ -206,7 +177,7 @@ textarea {
   min-height: 120px;
 }
 
-button[type="submit"] {
+button[type='submit'] {
   width: 100%; /* Match button width to input fields */
   padding: 0.75rem;
   background-color: var(--accent-color);
@@ -216,20 +187,14 @@ button[type="submit"] {
   font-size: 1rem;
   cursor: pointer;
   transition: background-color 0.3s ease;
+  text-align: center; /* Center text in button */
 }
 
-button[type="submit"]:hover {
+button[type='submit']:hover {
   background-color: #008ba3; /* Darker accent for hover */
 }
 
-.success-message {
-  color: var(--accent-color); /* Match accent color for consistency */
-  font-size: 1.1rem;
-  margin-top: 1rem;
-  text-align: center; /* Center-align the success message */
-}
-
-/* Resume page styles */
+/* Resume Download button style */
 .download-button {
   display: inline-block;
   margin-top: 1rem;
@@ -240,7 +205,6 @@ button[type="submit"]:hover {
   border-radius: 4px;
   font-size: 1rem;
   font-weight: 500;
-  text-align: center;
   transition: background-color 0.3s ease;
 }
 
@@ -248,23 +212,132 @@ button[type="submit"]:hover {
   background-color: #008ba3; /* Darker accent for hover */
 }
 
-section {
-  max-width: var(--content-max-width);
-  margin: 0 auto;
-  padding: 2rem;
+.success-message {
+  color: var(--accent-color); /* Match accent color for consistency */
+  font-size: 1.1rem;
+  margin-top: 1rem;
+  text-align: center; /* Center-align the success message */
+}
+
+/* CSS for Portfolio Page */
+
+.portfolio-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  justify-content: center;
+  margin-top: 2rem;
+}
+
+.project-card {
   background-color: var(--secondary-color);
+  padding: 1rem;
   border-radius: 8px;
   box-shadow: var(--box-shadow);
-  width: 100%; /* Full width */
-  box-sizing: border-box; /* Include padding in width calculation */
+  width: calc(33.333% - 2rem); /* Adjust width for responsiveness */
+  max-width: 300px; /* Ensure cards don’t get too wide */
+  text-align: center;
+  transition: transform 0.2s ease-in-out;
+}
+
+.project-card:hover {
+  transform: scale(1.05); /* Slight zoom effect on hover */
+}
+
+.project-image {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  margin-bottom: 1rem;
+}
+
+.project-card h3 {
+  font-size: 1.5rem;
+  color: var(--accent-color);
+  margin: 0.5rem 0;
+}
+
+.project-card p {
+  color: var(--text-color);
+  font-size: 1rem;
+  margin-bottom: 1rem;
+}
+
+.project-card a {
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  background-color: var(--accent-color);
+  color: white;
+  text-decoration: none;
+  border-radius: 4px;
+  transition: background-color 0.3s ease;
+}
+
+.project-card a:hover {
+  background-color: #008ba3; /* Slightly darker accent on hover */
+}
+
+@media (max-width: 768px) {
+  .project-card {
+    width: calc(50% - 1rem); /* Adjust width for smaller screens */
+  }
+}
+
+@media (max-width: 480px) {
+  .project-card {
+    width: 100%; /* Full width for very small screens */
+  }
+}
+
+footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: var(--footer-height);
+  background: var(--header-footer-bg);
+  color: var(--text-color);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: var(--box-shadow);
+  z-index: 1000;
+}
+
+.footer-content {
+  display: flex;
+  justify-content: center; /* Center badges and text */
+  align-items: center;
+  flex-direction: column;
+  width: 100%;
+  max-width: var(--content-max-width);
+  margin: 0 auto;
+}
+
+footer p {
+  margin: 0;
+  margin-bottom: 0.5rem; /* Small gap between text and badges */
+  text-align: center; /* Center-align the copyright text */
+}
+
+footer a {
+  margin: 0 10px;
+  color: var(--text-color);
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+footer a:hover {
+  color: var(--accent-color);
 }
 
 @media (max-width: 768px) {
   .header-content,
   .footer-content {
-    flex-direction: column;
+    flex-direction: column; /* Stack items vertically */
     align-items: center;
     text-align: center;
+    padding: 0; /* Remove side padding for full-width centering */
   }
 
   nav ul {
@@ -275,7 +348,8 @@ section {
 
   main {
     text-align: center; /* Center align content for consistent look */
-    padding: 2rem 0; /* Maintain vertical padding */
+    padding-top: calc(var(--header-height) + 2rem); /* Ensure content starts below header */
+    padding-bottom: calc(var(--footer-height) + 1rem); /* Ensure content ends above footer */
   }
 
   footer p,
