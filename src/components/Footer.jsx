@@ -9,6 +9,7 @@ function Footer() {
     <footer>
       <a href="https://github.com/ngojohn2002">GitHub</a>
       <a href="https://www.linkedin.com/in/yourusername/">LinkedIn</a>
+      <p>&copy; 2024 Truong Ngo. All rights reserved.</p>
     </footer>
   );
 }
