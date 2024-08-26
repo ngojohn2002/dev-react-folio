@@ -9,8 +9,8 @@
   --name-color: #00a1c2; /* Distinct color for the name */
   --header-footer-bg: linear-gradient(to right, #121212, #1f1f1f); /* Darker gradient for header/footer */
   --box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Subtle shadow */
-  --header-height: 70px; /* Height for header */
-  --footer-height: 50px; /* Height for footer */
+  --header-height: 90px; /* Increased height for header */
+  --footer-height: 70px; /* Increased height for footer */
   --content-max-width: 1200px; /* Max width for content */
   --content-padding: 1rem; /* Padding for content */
   font-family: 'Inter', system-ui, Avenir, Helvetica, Arial, sans-serif;
@@ -44,7 +44,8 @@ header {
   z-index: 1000;
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
+  padding: 1rem var(--content-padding); /* Increased padding around header */
 }
 
 .header-content,
@@ -100,7 +101,7 @@ nav a.active {
   color: var(--accent-color);
 }
 
-/* Main content styling to fit snugly between header and footer */
+/* Main content styling to extend fully between header and footer */
 .main-content {
   flex: 1; /* Allow main content to grow and fill available space */
   overflow-y: auto; /* Make main content scrollable */
@@ -152,6 +153,7 @@ form {
   gap: 1.5rem; /* Increased gap for better spacing */
   max-width: 600px;
   margin: 0 auto;
+  position: relative; /* Position relative for feedback positioning */
 }
 
 form div {
@@ -198,6 +200,14 @@ button[type='submit']:hover {
   background-color: #008ba3; /* Darker accent for hover */
 }
 
+/* Move feedback message to the top of the form for better visibility */
+.success-message {
+  margin-bottom: 1rem; /* Position above the form elements */
+  text-align: center; /* Center-align the success message */
+  color: var(--accent-color); /* Match accent color for consistency */
+  font-size: 1.1rem;
+}
+
 /* Resume Download button style */
 .download-button {
   display: inline-block;
@@ -214,13 +224,6 @@ button[type='submit']:hover {
 
 .download-button:hover {
   background-color: #008ba3; /* Darker accent for hover */
-}
-
-.success-message {
-  color: var(--accent-color); /* Match accent color for consistency */
-  font-size: 1.1rem;
-  margin-top: 1rem;
-  text-align: center; /* Center-align the success message */
 }
 
 /* CSS for Portfolio Page */
@@ -292,6 +295,26 @@ button[type='submit']:hover {
     padding-left: 0.5rem; /* Slightly smaller padding for smaller screens */
     padding-right: 0.5rem; /* Slightly smaller padding for smaller screens */
   }
+
+  .header-content,
+  .footer-content {
+    flex-direction: column; /* Stack items vertically */
+    align-items: center;
+    text-align: center;
+    padding: 0; /* Remove side padding for full-width centering */
+    gap: 0; /* Remove gap between elements in smaller screens */
+  }
+
+  nav ul {
+    justify-content: center; /* Center navigation items */
+    flex-wrap: wrap; /* Allow wrapping */
+    margin-top: 0.5rem; /* Adjust margin for better spacing */
+  }
+
+  footer p,
+  footer a {
+    margin: 0; /* Remove spacing between footer items */
+  }
 }
 
 @media (max-width: 480px) {
@@ -320,6 +343,7 @@ footer {
   align-items: center;
   box-shadow: var(--box-shadow);
   z-index: 1000;
+  padding: 1rem var(--content-padding); /* Increased padding around footer */
 }
 
 .footer-content {
@@ -330,11 +354,11 @@ footer {
   width: 100%;
   max-width: var(--content-max-width);
   margin: 0 auto;
+  gap: 0; /* Remove gap between footer items for better spacing */
 }
 
 footer p {
   margin: 0;
-  margin-bottom: 0.5rem; /* Small gap between text and badges */
   text-align: center; /* Center-align the copyright text */
 }
 
@@ -347,27 +371,6 @@ footer a {
 
 footer a:hover {
   color: var(--accent-color);
-}
-
-@media (max-width: 768px) {
-  .header-content,
-  .footer-content {
-    flex-direction: column; /* Stack items vertically */
-    align-items: center;
-    text-align: center;
-    padding: 0; /* Remove side padding for full-width centering */
-  }
-
-  nav ul {
-    justify-content: center; /* Center navigation items */
-    flex-wrap: wrap; /* Allow wrapping */
-    margin-top: 1rem;
-  }
-
-  footer p,
-  footer a {
-    margin: 0.5rem 0;
-  }
 }
 
 @media (prefers-color-scheme: dark) {
