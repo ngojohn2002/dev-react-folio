@@ -100,14 +100,18 @@ nav a.active {
   color: var(--accent-color);
 }
 
-main {
-  flex: 1; /* Allow main to grow and fill available space */
+/* Main content styling to fit snugly between header and footer */
+.main-content {
+  flex: 1; /* Allow main content to grow and fill available space */
   overflow-y: auto; /* Make main content scrollable */
-  padding-top: calc(var(--header-height) + 2rem); /* Adjust padding to add extra space below the header */
-  padding-bottom: calc(var(--footer-height) + 1rem); /* Ensure content ends above footer */
+  padding-top: calc(var(--header-height) + 1rem); /* Ensure content starts just below header */
+  padding-bottom: calc(var(--footer-height) + 1rem); /* Ensure content ends just above footer */
+  padding-left: var(--content-padding); /* Consistent padding for left */
+  padding-right: var(--content-padding); /* Consistent padding for right */
   width: 100%;
+  max-width: var(--content-max-width); /* Ensures content doesn't exceed max width */
+  margin: 0 auto; /* Center main content horizontally */
   box-sizing: border-box; /* Include padding in width calculation */
-  margin-top: var(--header-height); /* Offset main content to start below header */
 }
 
 section {
@@ -281,11 +285,25 @@ button[type='submit']:hover {
   .project-card {
     width: calc(50% - 1rem); /* Adjust width for smaller screens */
   }
+
+  .main-content {
+    padding-top: calc(var(--header-height) + 1rem); /* Adjust padding for smaller screens */
+    padding-bottom: calc(var(--footer-height) + 1rem); /* Adjust padding for smaller screens */
+    padding-left: 0.5rem; /* Slightly smaller padding for smaller screens */
+    padding-right: 0.5rem; /* Slightly smaller padding for smaller screens */
+  }
 }
 
 @media (max-width: 480px) {
   .project-card {
     width: 100%; /* Full width for very small screens */
+  }
+
+  .main-content {
+    padding-top: calc(var(--header-height) + 0.5rem); /* Further adjust padding for very small screens */
+    padding-bottom: calc(var(--footer-height) + 0.5rem); /* Further adjust padding for very small screens */
+    padding-left: 0.25rem; /* Minimal padding for very small screens */
+    padding-right: 0.25rem; /* Minimal padding for very small screens */
   }
 }
 
@@ -344,12 +362,6 @@ footer a:hover {
     justify-content: center; /* Center navigation items */
     flex-wrap: wrap; /* Allow wrapping */
     margin-top: 1rem;
-  }
-
-  main {
-    text-align: center; /* Center align content for consistent look */
-    padding-top: calc(var(--header-height) + 2rem); /* Ensure content starts below header */
-    padding-bottom: calc(var(--footer-height) + 1rem); /* Ensure content ends above footer */
   }
 
   footer p,

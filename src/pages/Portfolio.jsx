@@ -57,25 +57,27 @@ const projects = [
 
 function Portfolio() {
   return (
-    <section>
-      <h2>My Portfolio</h2>
-      <div className="portfolio-container">
-        {projects.map((project) => (
-          <div className="project-card" key={project.id}>
-            <img
-              src={project.image}
-              alt={project.title}
-              className="project-image"
-            />
-            <h3>{project.title}</h3>
-            <p>{project.description}</p>
-            <a href={project.link} target="_blank" rel="noopener noreferrer">
-              View Project
-            </a>
-          </div>
-        ))}
-      </div>
-    </section>
+    <main className="main-content">
+      <section>
+        <h2>My Portfolio</h2>
+        <div className="portfolio-container">
+          {projects.map((project) => (
+            <div className="project-card" key={project.id}>
+              <img
+                src={project.image}
+                alt={project.title}
+                className="project-image"
+              />
+              <h3>{project.title}</h3>
+              <p>{project.description}</p>
+              <a href={project.link} target="_blank" rel="noopener noreferrer">
+                View Project
+              </a>
+            </div>
+          ))}
+        </div>
+      </section>
+    </main>
   );
 }
 
