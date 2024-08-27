@@ -1,5 +1,3 @@
-// Contact.jsx
-
 import React, { useState } from "react";
 
 function Contact() {
@@ -9,7 +7,7 @@ function Contact() {
     message: "",
   });
 
-  const [isSubmitted, setIsSubmitted] = useState(false); // State to manage form submission
+  const [feedbackMessage, setFeedbackMessage] = useState("");
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -19,69 +17,75 @@ function Contact() {
     });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // Here you would normally handle form submission, e.g., sending the data to a server
-    console.log("Form submitted:", formData);
-    setIsSubmitted(true); // Set submitted state to true
-    // Reset form after submission
-    setFormData({
-      name: "",
-      email: "",
-      message: "",
-    });
-    // Clear the success message after a longer delay
-    setTimeout(() => {
-      setIsSubmitted(false);
-    }, 5000); // 5 seconds delay
+
+    // Send form data to Netlify function
+    try {
+      const response = await fetch("/.netlify/functions/sendEmail", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
+
+      const result = await response.json();
+
+      if (response.ok) {
+        setFeedbackMessage("Email sent successfully!");
+        setFormData({ name: "", email: "", message: "" }); // Reset form fields
+      } else {
+        setFeedbackMessage("Failed to send email. Please try again later.");
+      }
+    } catch (error) {
+      console.error("Error sending email:", error);
+      setFeedbackMessage("An error occurred while sending the email.");
+    }
   };
 
   return (
-    <main className="main-content">
-      <section>
-        <h2>Contact Me</h2>
-        <form onSubmit={handleSubmit}>
-          <div>
-            <label htmlFor="name">Name:</label>
-            <input
-              type="text"
-              id="name"
-              name="name"
-              value={formData.name}
-              onChange={handleChange}
-              required
-            />
-          </div>
-          <div>
-            <label htmlFor="email">Email:</label>
-            <input
-              type="email"
-              id="email"
-              name="email"
-              value={formData.email}
-              onChange={handleChange}
-              required
-            />
-          </div>
-          <div>
-            <label htmlFor="message">Message:</label>
-            <textarea
-              id="message"
-              name="message"
-              value={formData.message}
-              onChange={handleChange}
-              required
-            ></textarea>
-          </div>
-          <button type="submit">Submit</button>
-        </form>
-        {isSubmitted && (
-          <p className="success-message">
-            Thank you for your message! I will get back to you soon.
-          </p>
+    <section className="contact-section">
+      <h2>Contact Me</h2>
+      <form onSubmit={handleSubmit}>
+        {feedbackMessage && (
+          <p className="feedback-message">{feedbackMessage}</p>
         )}
-      </section>
-    </main>
+        <div>
+          <label htmlFor="name">Name</label>
+          <input
+            type="text"
+            id="name"
+            name="name"
+            value={formData.name}
+            onChange={handleChange}
+            required
+          />
+        </div>
+        <div>
+          <label htmlFor="email">Email</label>
+          <input
+            type="email"
+            id="email"
+            name="email"
+            value={formData.email}
+            onChange={handleChange}
+            required
+          />
+        </div>
+        <div>
+          <label htmlFor="message">Message</label>
+          <textarea
+            id="message"
+            name="message"
+            value={formData.message}
+            onChange={handleChange}
+            required
+          />
+        </div>
+        <button type="submit">Send</button>
+      </form>
+    </section>
   );
 }
 
