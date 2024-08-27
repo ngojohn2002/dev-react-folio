@@ -146,6 +146,45 @@ p {
   color: var(--text-color);
 }
 
+/* Bio Picture and About Page Styles */
+.bio-picture {
+  width: 200px; /* Fixed width for the circular image */
+  height: 200px; /* Fixed height to maintain a square */
+  border-radius: 50%; /* Make the image circular */
+  object-fit: cover; /* Crop the image to fit within the circle */
+  object-position: 35% 15%; /* Position the image within the container, slightly offset to the top left */
+  margin-right: 1rem; /* Add space to the right of the image */
+  margin-bottom: 1rem; /* Add space below the image */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Add a subtle shadow */
+  flex-shrink: 0; /* Prevent image from shrinking */
+}
+
+.bio-text {
+  flex: 1; /* Allow text to take the remaining space */
+}
+
+.about-content {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem; /* Space between image and text */
+  flex-wrap: wrap; /* Allow wrapping on smaller screens */
+}
+
+@media (max-width: 768px) {
+  .about-content {
+    flex-direction: column; /* Stack image and text vertically on smaller screens */
+    align-items: center;
+  }
+
+  .bio-picture {
+    margin-bottom: 1rem; /* Increase space below the image on smaller screens */
+  }
+
+  .bio-text {
+    text-align: center; /* Center-align text on smaller screens */
+  }
+}
+
 /* Contact form and Download Resume button styles */
 form {
   display: flex;

@@ -8,6 +8,11 @@ function About() {
   return (
     <main className="main-content">
       <section>
+        <img
+          src="/images/bio-pic.jpg"
+          alt="Truong Ngo"
+          className="bio-picture"
+        />
         <h2>About Me</h2>
         <p>
           Hello! I’m Truong Ngo, a passionate and dedicated full-stack software
