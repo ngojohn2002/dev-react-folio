@@ -64,3 +64,7 @@ This project is licensed under the MIT License. See the [LICENSE](./LICENSE) fil
 ## Contact
 
 For any questions or feedback, please contact me at [ngojohn2002@yahoo.com](mailto:ngojohn2002@yahoo.com).
+
+&copy; 2024 - Truong Ngo. All rights reserved.
+
+(20-React)
