@@ -1,8 +1,66 @@
-# React + Vite
+# Reactfolio
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This is a personal portfolio website built using React, showcasing various projects and skills.
 
-Currently, two official plugins are available:
+## Table of Contents
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- [Installation](#installation)
+- [Usage](#usage)
+- [Features](#features)
+- [Screenshots](#screenshots)
+- [Deployment](#deployment)
+- [License](#license)
+- [Contact](#contact)
+
+## Installation
+
+To run this project locally, follow these steps:
+
+1. **Clone the repository**:
+
+   ```bash
+   git clone https://github.com/ngojohn2002/dev-react-portfolio.git
+   cd dev-react-portfolio
+   ```
+
+2. **Install dependencies**:
+
+   ```bash
+   npm install
+   ```
+
+3. **Start the development server**:
+
+   ```bash
+   npm run dev
+   ```
+
+   This command will start the Vite development server. Open your browser and go to `http://localhost:3000/` to see the website.
+
+## Usage
+
+The portfolio showcases projects, skills, and contact information. You can navigate through the website using the navigation menu in the header.
+
+## Features
+
+- **React**: Built using React for a dynamic and responsive user interface.
+- **Responsive Design**: Optimized for desktop and mobile devices.
+- **Easy Navigation**: Clear and intuitive navigation with sticky header and footer.
+- **Project Showcase**: Displays various projects with links to GitHub repositories and live demos.
+- **Contact Form**: Allows users to get in touch.
+
+## Screenshots
+
+![Home Page](./public/images/20-React-dev-react-folio.png)
+
+## Deployment
+
+This application is deployed on Netlify. You can visit the live site here: [Dev React Portfolio](https://your-netlify-url.netlify.app)
+
+## License
+
+This project is licensed under the MIT License. See the [LICENSE](./LICENSE) file for more details.
+
+## Contact
+
+For any questions or feedback, please contact me at [ngojohn2002@yahoo.com](mailto:ngojohn2002@yahoo.com).
