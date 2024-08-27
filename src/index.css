@@ -131,7 +131,7 @@ h2 {
   font-size: 2rem;
   color: var(--accent-color);
   margin-top: 0;
-  padding-top: 1rem; /* Add padding to top of h2 for better spacing */
+  padding-top: 0; /* Removed padding for consistency with other pages */
 }
 
 h3 {
@@ -153,31 +153,30 @@ p {
   border-radius: 50%; /* Make the image circular */
   object-fit: cover; /* Crop the image to fit within the circle */
   object-position: 35% 15%; /* Position the image within the container, slightly offset to the top left */
-  margin-right: 1rem; /* Add space to the right of the image */
+  float: right; /* Float the image to the right */
+  margin-left: 1rem; /* Add space to the left of the image */
   margin-bottom: 1rem; /* Add space below the image */
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Add a subtle shadow */
-  flex-shrink: 0; /* Prevent image from shrinking */
 }
 
 .bio-text {
-  flex: 1; /* Allow text to take the remaining space */
+  text-align: justify; /* Justify text for better wrapping around the image */
 }
 
 .about-content {
-  display: flex;
-  align-items: flex-start;
-  gap: 1rem; /* Space between image and text */
-  flex-wrap: wrap; /* Allow wrapping on smaller screens */
+  overflow: hidden; /* Clear the float */
 }
 
 @media (max-width: 768px) {
   .about-content {
+    display: flex;
     flex-direction: column; /* Stack image and text vertically on smaller screens */
     align-items: center;
   }
 
   .bio-picture {
-    margin-bottom: 1rem; /* Increase space below the image on smaller screens */
+    float: none; /* Remove float on smaller screens */
+    margin: 0 auto 1rem; /* Center image with margin auto */
   }
 
   .bio-text {
