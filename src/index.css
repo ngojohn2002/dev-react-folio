@@ -9,8 +9,8 @@
   --name-color: #00a1c2; /* Distinct color for the name */
   --header-footer-bg: linear-gradient(to right, #121212, #1f1f1f); /* Darker gradient for header/footer */
   --box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Subtle shadow */
-  --header-height: 90px; /* Increased height for header */
-  --footer-height: 70px; /* Increased height for footer */
+  --header-height: 50px; /* Reduced height for header */
+  --footer-height: 40px; /* Reduced height for footer */
   --content-max-width: 1200px; /* Max width for content */
   --content-padding: 1rem; /* Padding for content */
   font-family: 'Inter', system-ui, Avenir, Helvetica, Arial, sans-serif;
@@ -37,7 +37,7 @@ header {
   top: 0;
   left: 0;
   right: 0;
-  height: var(--header-height);
+  height: var(--header-height); /* Reduced height */
   background: var(--header-footer-bg);
   color: var(--text-color);
   box-shadow: var(--box-shadow);
@@ -45,7 +45,7 @@ header {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 1rem var(--content-padding); /* Increased padding around header */
+  padding: 0.5rem var(--content-padding); /* Adjusted padding for reduced height */
 }
 
 .header-content,
@@ -61,7 +61,7 @@ header {
 
 header h1 {
   margin: 0;
-  font-size: 2rem;
+  font-size: 1.5rem; /* Adjusted font size for reduced height */
   font-weight: 700;
   letter-spacing: 1px;
   color: var(--name-color); /* Use a distinct color for the name */
@@ -81,7 +81,7 @@ nav ul {
   list-style: none;
   padding: 0;
   display: flex;
-  gap: 1.5rem; /* Adjust gap for better fit */
+  gap: 1rem; /* Adjusted gap for better fit */
   margin: 0;
 }
 
@@ -200,7 +200,7 @@ button[type='submit']:hover {
   background-color: #008ba3; /* Darker accent for hover */
 }
 
-/* Move feedback message to the top of the form for better visibility */
+/* Success message positioning */
 .success-message {
   margin-bottom: 1rem; /* Position above the form elements */
   text-align: center; /* Center-align the success message */
@@ -335,7 +335,7 @@ footer {
   bottom: 0;
   left: 0;
   right: 0;
-  height: var(--footer-height);
+  height: var(--footer-height); /* Reduced height */
   background: var(--header-footer-bg);
   color: var(--text-color);
   display: flex;
@@ -343,7 +343,7 @@ footer {
   align-items: center;
   box-shadow: var(--box-shadow);
   z-index: 1000;
-  padding: 1rem var(--content-padding); /* Increased padding around footer */
+  padding: 0.5rem var(--content-padding); /* Adjusted padding for reduced height */
 }
 
 .footer-content {
