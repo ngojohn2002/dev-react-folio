@@ -55,7 +55,7 @@ The portfolio showcases projects, skills, and contact information. You can navig
 
 ## Deployment
 
-This application is deployed on Netlify. You can visit the live site here: [Dev React Portfolio](https://your-netlify-url.netlify.app)
+This application is deployed on Netlify. You can visit the live site here: [Dev React Portfolio](https://enchanting-ganache-d92d7f.netlify.app/)
 
 ## License
 
